@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction().add(R.id.mainContainer,FragmentGRZ()).commit()
+            supportFragmentManager.beginTransaction().addToBackStack("first").add(R.id.mainContainer,FragmentGRZ()).commit()
         }
     }
 }

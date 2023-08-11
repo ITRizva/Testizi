@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatTextView
+
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit"
+        app:layout_constraintEnd_toEndOf="@+id/edit"
+        app:layout_constraintStart_toStartOf="@+id/edit"
+        android:text="Введите ГРЗ"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textStyle="bold"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit"
         android:layout_width="100dp"
@@ -15,13 +26,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="50dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="@+id/edit"
         app:layout_constraintStart_toStartOf="@+id/edit"
         app:layout_constraintTop_toBottomOf="@+id/edit"
-        android:id="@+id/edit_button"
-        android:text="day"/>
+        android:gravity="center"
+        android:id="@+id/continue_button"
+        android:text="Продолжить"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="5dp"
+        android:id="@+id/skip_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Пропустить"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/continue_button"
+        app:layout_constraintStart_toStartOf="@+id/continue_button"
+        app:layout_constraintTop_toBottomOf="@+id/continue_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

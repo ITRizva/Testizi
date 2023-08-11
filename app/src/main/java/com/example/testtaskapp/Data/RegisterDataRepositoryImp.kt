@@ -16,7 +16,7 @@ class RegisterDataRepositoryImp(private val context: Context): RegisterDataRepos
         return true
     }
 
-    override fun getRegisterData(): DirectEntity {
+    override fun getRegisterData(): DirectEntity? {
         val stringData = sharedPreferences.getString(KEY_REGISTER_DATA, "")
         return Gson().fromJson(stringData, DirectEntity::class.java)
     }

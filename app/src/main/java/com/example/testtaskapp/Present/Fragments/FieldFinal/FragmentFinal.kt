@@ -9,7 +9,7 @@ import java.io.Serializable
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FinalFragment:Fragment() {
+class FragmentFinal:Fragment() {
     @Inject
     lateinit var saveRegisterData:SaveRegisterDataUseCase
 
