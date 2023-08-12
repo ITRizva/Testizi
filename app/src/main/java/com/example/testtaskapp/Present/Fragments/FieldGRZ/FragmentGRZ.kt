@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.add
+import com.example.testtaskapp.Domain.domainModels.DirectEntity
 import com.example.testtaskapp.Domain.usecases.GetRegisterDataUseCase
 import com.example.testtaskapp.Present.Fragments.FieldFinal.FragmentFinal
+import com.example.testtaskapp.Present.Fragments.FieldSTS.FragmentSTS
 import com.example.testtaskapp.R
 import com.example.testtaskapp.databinding.FragmentGrzBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +42,18 @@ class FragmentGRZ:Fragment() {
     ): View? {
         binding = FragmentGrzBinding.inflate(inflater,container,false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.continueButton.setOnClickListener {
+            val result = binding.edit.text.toString()
+            val transit = DirectEntity(
+                grz = result
+            )
+            val fragmentInstance = FragmentSTS.newInstance(transit)
+            parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("STS").commit()
+        }
     }
 
 

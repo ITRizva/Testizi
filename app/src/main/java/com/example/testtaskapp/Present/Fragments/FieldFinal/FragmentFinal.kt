@@ -16,9 +16,9 @@ class FragmentFinal:Fragment() {
     companion object{
         private const val FINAL_VALUE = "FINAL_VALUE"
         @JvmStatic
-        fun newInstance(value: Serializable): FragmentGRZ {
+        fun newInstance(value: Serializable): FragmentFinal {
             val transitValue: Bundle = Bundle().apply { putSerializable(FINAL_VALUE,value) }
-            val fragment = FragmentGRZ()
+            val fragment = FragmentFinal()
             fragment.arguments = transitValue
             return fragment
         }

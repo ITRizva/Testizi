@@ -12,9 +12,9 @@ class FragmentVU:Fragment() {
     companion object{
         private const val VU_VALUE = "VU_VALUE"
         @JvmStatic
-        fun newInstance(value: Serializable): FragmentGRZ {
+        fun newInstance(value: Serializable): FragmentVU {
             val transitValue: Bundle = Bundle().apply { putSerializable(VU_VALUE,value) }
-            val fragment = FragmentGRZ()
+            val fragment = FragmentVU()
             fragment.arguments = transitValue
             return fragment
         }
