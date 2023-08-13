@@ -14,7 +14,7 @@ kotlin {
 }
 android {
     namespace = "com.example.testtaskapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.testtaskapp"
@@ -91,4 +91,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation("com.google.android.material:material:1.0.0")
+    implementation ("com.android.support:design:34.0.0-alpha1")
 }

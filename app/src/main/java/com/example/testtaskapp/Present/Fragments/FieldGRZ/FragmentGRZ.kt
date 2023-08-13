@@ -47,7 +47,7 @@ class FragmentGRZ:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
-            val result = binding.edit.text.toString()
+            val result = binding.editNumber.text.toString()
             val transit = DirectEntity(
                 grz = result
             )
