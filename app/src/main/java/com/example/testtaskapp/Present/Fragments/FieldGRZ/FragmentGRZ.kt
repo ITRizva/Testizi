@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
 import com.example.testtaskapp.Domain.domainModels.DirectEntity
 import com.example.testtaskapp.Domain.usecases.GetRegisterDataUseCase
 import com.example.testtaskapp.Present.Fragments.FieldFinal.FragmentFinal
 import com.example.testtaskapp.Present.Fragments.FieldSTS.FragmentSTS
+import com.example.testtaskapp.Present.checkOnGroup
 import com.example.testtaskapp.R
 import com.example.testtaskapp.databinding.FragmentGrzBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,12 +49,18 @@ class FragmentGRZ:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
-            val result = binding.editNumber.text.toString()
-            val transit = DirectEntity(
-                grz = result
-            )
-            val fragmentInstance = FragmentSTS.newInstance(transit)
-            parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("STS").commit()
+            val result:String = (binding.editSeriaNumber.text.toString()+ binding.editRegion.text.toString()).uppercase()
+            if(result.checkOnGroup()){
+                val transit = DirectEntity(
+                    grz = result
+                )
+                val fragmentInstance = FragmentSTS.newInstance(transit)
+                parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("STS").commit()
+            }
+            else{
+                Toast.makeText(requireActivity(),"Проверьте правильность ввода",Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

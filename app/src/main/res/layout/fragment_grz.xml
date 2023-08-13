@@ -22,11 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Серия номер">
+            android:hint="Серия ">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_seria"
+                android:id="@+id/edit_seria_number"
                 android:textSize="14sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
