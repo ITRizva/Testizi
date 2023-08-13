@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_sts"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Введите СТС"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_grz"
+        app:layout_constraintEnd_toEndOf="@+id/text_grz"
+        app:layout_constraintStart_toStartOf="@+id/text_grz" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_grz"
@@ -14,42 +27,59 @@
         android:text="Введите СТС"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edit_number"
-        app:layout_constraintEnd_toEndOf="@+id/edit_number"
-        app:layout_constraintStart_toStartOf="@+id/edit_number"
-        app:layout_constraintTop_toTopOf="parent" />
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_number"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/filledTextField"
+        app:layout_constraintEnd_toEndOf="@+id/filledTextField"
+        app:layout_constraintStart_toStartOf="@+id/filledTextField" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filledTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_sts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="СТС"
+            android:maxLength="10"
+            android:textSize="14sp"
+
+             />
+        <!--this is the actual edit text which takes the input-->
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continue_button"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/edit_number"
-        app:layout_constraintStart_toStartOf="@+id/edit_number"
-        app:layout_constraintTop_toBottomOf="@+id/edit_number"
         android:gravity="center"
-        android:id="@+id/continue_button"
+
         android:text="Продолжить"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/filledTextField"
+        app:layout_constraintStart_toStartOf="@+id/filledTextField"
+        app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="5dp"
         android:id="@+id/skip_button"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="Пропустить"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:gravity="center"
+        android:text="Пропустить"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/continue_button"
         app:layout_constraintStart_toStartOf="@+id/continue_button"
         app:layout_constraintTop_toBottomOf="@+id/continue_button" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

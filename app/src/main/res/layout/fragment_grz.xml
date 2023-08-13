@@ -29,7 +29,8 @@
                 android:id="@+id/edit_seria_number"
                 android:textSize="14sp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:maxLength="6"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,7 +48,8 @@
                 android:id="@+id/edit_region"
                 android:textSize="14sp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:maxLength="3"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
