@@ -43,6 +43,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_grz"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:gravity="center"
@@ -66,6 +67,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_sts"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:gravity="center"
@@ -89,6 +91,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_vu"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:gravity="center"

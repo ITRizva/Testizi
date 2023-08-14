@@ -2,6 +2,7 @@ package com.example.testtaskapp.Data
 
 
 import android.content.Context
+import com.example.testtaskapp.Data.localModels.LocalEntity
 import com.example.testtaskapp.Domain.interfaces.RegisterDataRepositoryGet
 import com.example.testtaskapp.Domain.interfaces.RegisterDataRepositorySave
 import com.example.testtaskapp.Domain.domainModels.DirectEntity
@@ -10,8 +11,8 @@ import com.google.gson.Gson
 class RegisterDataRepositoryImp(private val context: Context): RegisterDataRepositoryGet,
     RegisterDataRepositorySave {
     private val sharedPreferences = context.getSharedPreferences(SHARED_REGISTER_NAME,Context.MODE_PRIVATE)
-    override fun saveRegisterData(data: DirectEntity): Boolean {
-        val refData = Gson().toJson(data)
+    override fun saveRegisterData(data: LocalEntity): Boolean {
+        val refData = Gson().toJson(data.toDirectEntity())
         sharedPreferences.edit().putString(KEY_REGISTER_DATA,refData).apply()
         return true
     }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestTaskApp</string>
+    <string name="repeat_search">Repeat the search</string>
 </resources>

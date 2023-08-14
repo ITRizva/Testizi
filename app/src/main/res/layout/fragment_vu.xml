@@ -38,18 +38,33 @@
         android:text="Не указано"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edit_number"
-        app:layout_constraintEnd_toEndOf="@+id/edit_number"
-        app:layout_constraintStart_toStartOf="@+id/edit_number" />
+        app:layout_constraintBottom_toTopOf="@+id/edit_vu"
+        app:layout_constraintEnd_toEndOf="@+id/edit_vu"
+        app:layout_constraintStart_toStartOf="@+id/edit_vu" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_number"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_vu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_vu_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="ВУ"
+            android:maxLength="10"
+            android:textSize="14sp"
+
+            />
+        <!--this is the actual edit text which takes the input-->
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/continue_button"
@@ -59,9 +74,9 @@
         android:text="Продолжить"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/edit_number"
-        app:layout_constraintStart_toStartOf="@+id/edit_number"
-        app:layout_constraintTop_toBottomOf="@+id/edit_number" />
+        app:layout_constraintEnd_toEndOf="@+id/edit_vu"
+        app:layout_constraintStart_toStartOf="@+id/edit_vu"
+        app:layout_constraintTop_toBottomOf="@+id/edit_vu" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/skip_button"

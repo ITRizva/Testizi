@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.example.testtaskapp.Domain.domainModels.DirectEntity
+import com.example.testtaskapp.Present.Fragments.Dialogs.AlertDialogTask
 import com.example.testtaskapp.Present.Fragments.FieldGRZ.FragmentGRZ
 import com.example.testtaskapp.Present.Fragments.FieldVU.FragmentVU
 import com.example.testtaskapp.Present.checkSTS
@@ -57,6 +59,10 @@ class FragmentSTS: Fragment() {
             else{
                 Toast.makeText(requireActivity(),"Проверьте правильность ввода", Toast.LENGTH_SHORT).show()
             }
+        }
+        binding.skipButton.setOnClickListener {
+            val fragment = AlertDialogTask() as DialogFragment
+            fragment.show(parentFragmentManager,"Dialog")
         }
     }
     companion object{

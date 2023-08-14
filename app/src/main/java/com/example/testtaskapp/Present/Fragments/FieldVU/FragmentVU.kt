@@ -5,10 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.example.testtaskapp.Domain.domainModels.DirectEntity
+import com.example.testtaskapp.Present.Fragments.Dialogs.AlertDialogTask
+import com.example.testtaskapp.Present.Fragments.FieldFinal.FragmentFinal
 import com.example.testtaskapp.Present.Fragments.FieldGRZ.FragmentGRZ
 import com.example.testtaskapp.Present.Fragments.FieldSTS.FragmentSTS
+import com.example.testtaskapp.Present.checkVU
+import com.example.testtaskapp.Present.replaceEnLetterToRu
+import com.example.testtaskapp.R
 import com.example.testtaskapp.databinding.FragmentStsBinding
 import com.example.testtaskapp.databinding.FragmentVuBinding
 import java.io.Serializable
@@ -33,9 +40,30 @@ class FragmentVU:Fragment() {
             if(refData != null) transitData = refData
         }
         binding = FragmentVuBinding.inflate(inflater,container,false)
-        binding.textGrz.text = transitData.grz
+        binding.textGrz.text = transitData.grz?.replaceEnLetterToRu()
         binding.textSts.text = transitData.sts
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.continueButton.setOnClickListener {
+            val result = binding.editVuField.text.toString().uppercase()
+            if(result.checkVU()){
+                val transit = DirectEntity(grz = transitData.grz,sts = transitData.sts,vu = result)
+                val fragmentInstance = FragmentFinal.newInstance(transit)
+                parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("FINAL").commit()
+
+            }
+            else{
+                Toast.makeText(requireActivity(),"Проверьте правильность ввода", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.skipButton.setOnClickListener {
+            val fragment = AlertDialogTask()
+            fragment.isFinal = transitData
+            fragment.show(parentFragmentManager,"Dialog")
+        }
     }
     companion object{
         private const val VU_VALUE = "VU_VALUE"

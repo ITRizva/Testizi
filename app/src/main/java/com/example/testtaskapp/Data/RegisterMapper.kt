@@ -10,3 +10,10 @@ fun LocalEntity.toDirectEntity(): DirectEntity {
         vu = this.vu
     )
 }
+fun DirectEntity.toLocalEntity():LocalEntity{
+    return LocalEntity(
+        grz = this.grz,
+        sts = this.sts,
+        vu = this.vu
+    )
+}
