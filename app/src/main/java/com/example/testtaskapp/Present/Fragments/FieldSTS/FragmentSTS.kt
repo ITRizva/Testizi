@@ -54,7 +54,7 @@ class FragmentSTS: Fragment() {
             if(result.checkSTS()){
                 val transit = DirectEntity(grz = transitData.grz,sts=result)
                 val fragmentInstance = FragmentVU.newInstance(transit)
-                parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("VU").commit()
+                parentFragmentManager.beginTransaction().replace(R.id.mainContainer,fragmentInstance).addToBackStack("VU").commit()
             }
             else{
                 Toast.makeText(requireActivity(),"Проверьте правильность ввода", Toast.LENGTH_SHORT).show()

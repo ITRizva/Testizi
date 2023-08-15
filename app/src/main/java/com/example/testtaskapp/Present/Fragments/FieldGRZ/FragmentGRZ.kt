@@ -46,8 +46,9 @@ class FragmentGRZ:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
-            val result:String = (binding.editSeriaNumber.text.toString()+" "+ binding.editRegion.text.toString()).uppercase()
-            if(result.checkOnGroup()){
+            val region:String = binding.editRegion.text.toString()
+            val result:String = (binding.editSeriaNumber.text.toString()+" "+ region).uppercase()
+            if(result.checkOnGroup() && region.length>1){
                 val transit = DirectEntity(
                     grz = result
                 )
@@ -71,7 +72,7 @@ class FragmentGRZ:Fragment() {
         when(state){
             is ViewModelGRZState.Content -> {
                 val fragmentInstance = FragmentFinal.newInstance(state.data)
-                parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).commit()
+                parentFragmentManager.beginTransaction().replace(R.id.mainContainer,fragmentInstance).commit()
             }
             else -> {}
         }

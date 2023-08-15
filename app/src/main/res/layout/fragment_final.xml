@@ -100,6 +100,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/restart"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:gravity="center"

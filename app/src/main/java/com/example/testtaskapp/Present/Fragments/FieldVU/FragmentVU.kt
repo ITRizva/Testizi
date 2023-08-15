@@ -52,7 +52,7 @@ class FragmentVU:Fragment() {
             if(result.checkVU()){
                 val transit = DirectEntity(grz = transitData.grz,sts = transitData.sts,vu = result)
                 val fragmentInstance = FragmentFinal.newInstance(transit)
-                parentFragmentManager.beginTransaction().add(R.id.mainContainer,fragmentInstance).addToBackStack("FINAL").commit()
+                parentFragmentManager.beginTransaction().replace(R.id.mainContainer,fragmentInstance).addToBackStack("FINAL").commit()
 
             }
             else{
