@@ -22,7 +22,7 @@ import java.io.Serializable
 
 @Suppress("DEPRECATION")
 class FragmentSTS: Fragment() {
-    private lateinit var binding:FragmentStsBinding
+    private  var binding:FragmentStsBinding? = null
     private var transitData= DirectEntity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,16 +41,16 @@ class FragmentSTS: Fragment() {
             if(refData != null) transitData = refData
         }
         binding = FragmentStsBinding.inflate(inflater,container,false)
-        binding.textGrz.text = transitData.grz?.replaceEnLetterToRu()
-        return binding.root
+        binding?.textGrz?.text = transitData.grz?.replaceEnLetterToRu()
+        return binding?.root
 
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.continueButton.setOnClickListener {
-            val result = binding.editSts.text.toString().uppercase()
+        binding?.continueButton?.setOnClickListener {
+            val result = binding?.editSts?.text.toString().uppercase()
             if(result.checkSTS()){
                 val transit = DirectEntity(grz = transitData.grz,sts=result)
                 val fragmentInstance = FragmentVU.newInstance(transit)
@@ -60,10 +60,14 @@ class FragmentSTS: Fragment() {
                 Toast.makeText(requireActivity(),"Проверьте правильность ввода", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.skipButton.setOnClickListener {
+        binding?.skipButton?.setOnClickListener {
             val fragment = AlertDialogTask() as DialogFragment
             fragment.show(parentFragmentManager,"Dialog")
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
     companion object{
         private const val STS_VALUE = "STS_VALUE"

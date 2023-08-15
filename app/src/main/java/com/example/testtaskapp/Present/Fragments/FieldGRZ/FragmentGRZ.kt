@@ -26,7 +26,7 @@ import javax.inject.Inject
 class FragmentGRZ:Fragment() {
 
 
-    private lateinit var binding: FragmentGrzBinding
+    private  var binding: FragmentGrzBinding? = null
     private val viewModel by viewModels<ViewModelGRZ>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,14 +40,14 @@ class FragmentGRZ:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGrzBinding.inflate(inflater,container,false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.continueButton.setOnClickListener {
-            val region:String = binding.editRegion.text.toString()
-            val result:String = (binding.editSeriaNumber.text.toString()+" "+ region).uppercase()
+        binding?.continueButton?.setOnClickListener {
+            val region:String = binding?.editRegion?.text.toString()
+            val result:String = (binding?.editSeriaNumber?.text.toString()+" "+ region).uppercase()
             if(result.checkOnGroup() && region.length>1){
                 val transit = DirectEntity(
                     grz = result
@@ -60,13 +60,17 @@ class FragmentGRZ:Fragment() {
             }
 
         }
-        binding.skipButton.setOnClickListener {
+        binding?.skipButton?.setOnClickListener {
             val fragment = AlertDialogTask()
             fragment.show(parentFragmentManager,"Dialog")
         }
         viewModel.contentState.observe(viewLifecycleOwner){
                     showScreen(it)
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
     private fun showScreen(state:ViewModelGRZState){
         when(state){

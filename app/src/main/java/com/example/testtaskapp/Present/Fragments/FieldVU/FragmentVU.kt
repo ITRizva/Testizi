@@ -22,7 +22,7 @@ import java.io.Serializable
 
 @Suppress("DEPRECATION")
 class FragmentVU:Fragment() {
-    lateinit var binding: FragmentVuBinding
+    private  var binding: FragmentVuBinding? = null
     private var transitData = DirectEntity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +40,15 @@ class FragmentVU:Fragment() {
             if(refData != null) transitData = refData
         }
         binding = FragmentVuBinding.inflate(inflater,container,false)
-        binding.textGrz.text = transitData.grz?.replaceEnLetterToRu()
-        binding.textSts.text = transitData.sts
-        return binding.root
+        binding?.textGrz?.text = transitData.grz?.replaceEnLetterToRu()
+        binding?.textSts?.text = transitData.sts
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.continueButton.setOnClickListener {
-            val result = binding.editVuField.text.toString().uppercase()
+        binding?.continueButton?.setOnClickListener {
+            val result = binding?.editVuField?.text.toString().uppercase()
             if(result.checkVU()){
                 val transit = DirectEntity(grz = transitData.grz,sts = transitData.sts,vu = result)
                 val fragmentInstance = FragmentFinal.newInstance(transit)
@@ -59,11 +59,15 @@ class FragmentVU:Fragment() {
                 Toast.makeText(requireActivity(),"Проверьте правильность ввода", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.skipButton.setOnClickListener {
+        binding?.skipButton?.setOnClickListener {
             val fragment = AlertDialogTask()
             fragment.isFinal = transitData
             fragment.show(parentFragmentManager,"Dialog")
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
     companion object{
         private const val VU_VALUE = "VU_VALUE"

@@ -16,24 +16,24 @@ import com.example.testtaskapp.databinding.AlertDialogBinding
 import com.example.testtaskapp.databinding.FragmentFinalBinding
 
 class AlertDialogTask : DialogFragment() {
-    private lateinit var binding: AlertDialogBinding
+    private  var binding: AlertDialogBinding? = null
     var isFinal: DirectEntity? = null
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = AlertDialogBinding.inflate(layoutInflater)
-        binding.TextLocationDialog.text =
+        binding?.TextLocationDialog?.text =
             "Вы уверены что хотите пропустить данный шаг?"
-        binding.CancelButtonLocation.text = "Cancel"
-        binding.AccessButtonLocation.text = "Access"
-        binding.AccessButtonLocation.setOnClickListener {
+        binding?.CancelButtonLocation?.text = "Cancel"
+        binding?.AccessButtonLocation?.text = "Access"
+        binding?.AccessButtonLocation?.setOnClickListener {
             onClickEvent(it)
         }
-        binding.CancelButtonLocation.setOnClickListener {
+        binding?.CancelButtonLocation?.setOnClickListener {
             onClickEvent(it)
         }
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setView(binding.root)
+        builder.setView(binding?.root)
         val dialog = builder.create()
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setBackgroundDrawable(resources.getDrawable(R.drawable.item_round, null))
@@ -44,11 +44,11 @@ class AlertDialogTask : DialogFragment() {
 
     private fun onClickEvent(view: View) {
         when (view) {
-            binding.CancelButtonLocation -> {
+            binding?.CancelButtonLocation -> {
                 dismiss()
             }
 
-            binding.AccessButtonLocation -> {
+            binding?.AccessButtonLocation -> {
 
                 if (isFinal != null) {
                     val fragmentInstance = FragmentFinal.newInstance(isFinal!!)
@@ -63,6 +63,11 @@ class AlertDialogTask : DialogFragment() {
                 dismiss()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 }
