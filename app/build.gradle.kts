@@ -93,4 +93,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.google.android.material:material:1.0.0")
     implementation ("com.android.support:design:34.0.0-alpha1")
+
 }

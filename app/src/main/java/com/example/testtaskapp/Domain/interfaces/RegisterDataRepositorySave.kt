@@ -1,8 +1,7 @@
 package com.example.testtaskapp.Domain.interfaces
 
-import com.example.testtaskapp.Data.localModels.LocalEntity
-import com.example.testtaskapp.Domain.domainModels.DirectEntity
+import com.example.testtaskapp.Domain.domainModels.AutoRegisterEntity
 
 interface RegisterDataRepositorySave {
-    fun saveRegisterData(data: LocalEntity):Boolean
+    fun saveRegisterData(data: AutoRegisterEntity)
 }

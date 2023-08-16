@@ -1,4 +1,4 @@
-package com.example.testtaskapp.Present.di
+package com.example.testtaskapp.di
 
 import android.content.Context
 import com.example.testtaskapp.Data.RegisterDataRepositoryImp
@@ -22,7 +22,6 @@ object UseCaseProvider {
     @Provides
     @Singleton
     fun provideRegisterDataRepositoryImp(@ApplicationContext context: Context):RegisterDataRepositoryImp =  RegisterDataRepositoryImp(context)
-
     @Provides
     @Singleton
     fun provideRegisterDataRepositoryGet(repositoryImp:RegisterDataRepositoryImp):RegisterDataRepositoryGet = repositoryImp
