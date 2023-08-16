@@ -12,6 +12,7 @@ import com.example.testtaskapp.Domain.interfaces.RegisterDataRepositoryGet
 import com.example.testtaskapp.Domain.usecases.GetRegisterDataUseCase
 import com.example.testtaskapp.Domain.usecases.SaveRegisterDataUseCase
 import com.example.testtaskapp.Present.Fragments.Dialogs.AlertDialogTask
+import com.example.testtaskapp.Present.Fragments.FieldFinal.FragmentFinal
 import com.example.testtaskapp.Present.Fragments.FieldSTS.FragmentSTS
 import com.example.testtaskapp.Present.checkOnGroup
 import com.example.testtaskapp.Present.replaceEnLetterToRu
@@ -29,12 +30,11 @@ class ViewModelGRZ @Inject constructor(private val getRegisterDataUseCase: GetRe
     private var numberAuto = ""
     private var regionAuto = ""
 
-    fun loadContent() {
+    fun loadContent(activity:FragmentActivity) {
         _content.value = ViewModelGRZState.Loading
-
         val result = getRegisterDataUseCase.execute()
         if (result != null) {
-            _content.value = ViewModelGRZState.Content(result)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.mainContainer,FragmentFinal()).commit()
         } else {
             _content.value = ViewModelGRZState.Error
         }

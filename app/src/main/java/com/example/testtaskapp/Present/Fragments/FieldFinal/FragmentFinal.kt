@@ -69,7 +69,8 @@ class FragmentFinal : Fragment() {
             }
         }
         binding?.restart?.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.mainContainer, FragmentGRZ()).addToBackStack("REFRESH").commit()
+            viewModel.deleteData()
+            viewModel.backOnFirst(requireActivity())
         }
     }
 

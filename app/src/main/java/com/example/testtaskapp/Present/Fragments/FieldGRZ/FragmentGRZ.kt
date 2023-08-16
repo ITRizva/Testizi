@@ -9,6 +9,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.testtaskapp.Domain.usecases.GetRegisterDataUseCase
+import com.example.testtaskapp.Present.Fragments.FieldFinal.FragmentFinal
+import com.example.testtaskapp.R
 import com.example.testtaskapp.databinding.FragmentGrzBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -22,7 +24,7 @@ class FragmentGRZ  : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadContent()
+        viewModel.loadContent(requireActivity())
     }
 
     override fun onCreateView(

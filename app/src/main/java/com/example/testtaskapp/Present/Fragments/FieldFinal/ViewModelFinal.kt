@@ -1,5 +1,6 @@
 package com.example.testtaskapp.Present.Fragments.FieldFinal
 
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,8 @@ import com.example.testtaskapp.Domain.domainModels.AutoRegisterEntity
 import com.example.testtaskapp.Domain.usecases.DeleteRegisterDataUseCase
 import com.example.testtaskapp.Domain.usecases.GetRegisterDataUseCase
 import com.example.testtaskapp.Domain.usecases.SaveRegisterDataUseCase
+import com.example.testtaskapp.Present.Fragments.FieldGRZ.FragmentGRZ
+import com.example.testtaskapp.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -36,6 +39,14 @@ class ViewModelFinal @Inject constructor(
         } else {
             _contentState.value = ViewModelFinalState.Error
         }
+    }
+
+    fun deleteData(){
+        deleteRegisterDataUseCase.execute()
+    }
+
+    fun backOnFirst(activity:FragmentActivity){
+        activity.supportFragmentManager.beginTransaction().replace(R.id.mainContainer, FragmentGRZ()).addToBackStack("REFRESH").commit()
     }
 
 
